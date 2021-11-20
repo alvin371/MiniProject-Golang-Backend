@@ -18,6 +18,9 @@ type Distributor struct {
 	Address string
 }
 
+type Bussiness interface {
+	GetAllData(search string) (resp []Core)
+}
 type Data interface {
-	GetAllData(title string) (resp []Core)
+	SelectData(name string) (resp []Core)
 }
