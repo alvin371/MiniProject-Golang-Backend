@@ -2,9 +2,9 @@ package factory
 
 import (
 	"A-Golang-MiniProject/config"
-	_product_bussiness "A-Golang-MiniProject/features/products/bussiness"
-	_product_data "A-Golang-MiniProject/features/products/data"
-	_product_presentation "A-Golang-MiniProject/features/products/presentation"
+	_product_bussiness "A-Golang-MiniProject/features/product/bussiness"
+	_product_data "A-Golang-MiniProject/features/product/data"
+	_product_presentation "A-Golang-MiniProject/features/product/presentation"
 )
 
 type Presenter struct {

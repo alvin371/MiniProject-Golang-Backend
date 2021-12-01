@@ -13,6 +13,7 @@ func New() *echo.Echo {
 	//initiate
 	e := echo.New()
 	e.GET("/product", presenter.ProductPresentation.GetAllData)
+	e.POST("/product", presenter.ProductPresentation.AddProduct)
 
 	return e
 }
