@@ -1,4 +1,4 @@
-package dm
+package distributor
 
 import (
 	"time"
@@ -7,8 +7,8 @@ import (
 type Core struct {
 	ID        int
 	Name      string
-	Price     float32
-	Desc      string
+	Telp      float32
+	Address   string
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
@@ -20,5 +20,5 @@ type Bussiness interface {
 
 type Data interface {
 	GetAllData(name string) (resp []Core)
-	CreateData(data Core) (resp Core, err error)
+	InsertData(data Core) (resp Core, err error)
 }
