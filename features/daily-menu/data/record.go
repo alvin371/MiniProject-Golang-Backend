@@ -10,12 +10,7 @@ type DailyMenu struct {
 	gorm.Model
 	Name  string `gorm:"type:varchar(50)"`
 	Price float32
-	Obj   []Obj
-}
-
-type Obj struct {
-	gorm.Model
-	Name string
+	Desc  string
 }
 
 func (dm *DailyMenu) toCore() dailymenu.DailyMenu {
@@ -23,7 +18,6 @@ func (dm *DailyMenu) toCore() dailymenu.DailyMenu {
 		ID:        int(dm.ID),
 		Name:      dm.Name,
 		Price:     dm.Price,
-		Obj:       dm.toCore().Obj,
 		CreatedAt: dm.CreatedAt,
 		UpdatedAt: dm.UpdatedAt,
 	}

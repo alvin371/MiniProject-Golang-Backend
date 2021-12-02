@@ -8,14 +8,9 @@ type DailyMenu struct {
 	ID        int
 	Name      string
 	Price     float32
-	Obj       []Obj
+	Desc      string
 	CreatedAt time.Time
 	UpdatedAt time.Time
-}
-
-type Obj struct {
-	ID   int
-	Name string
 }
 
 type Bussiness interface {
