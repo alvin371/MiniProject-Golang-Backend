@@ -20,7 +20,9 @@ type Distributor struct {
 
 type Bussiness interface {
 	GetAllData(search string) (resp []Core)
+	CreateData(data Core) (resp Core, err error)
 }
 type Data interface {
 	SelectData(name string) (resp []Core)
+	InsertData(data Core) (resp Core, err error)
 }

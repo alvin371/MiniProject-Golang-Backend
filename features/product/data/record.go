@@ -41,3 +41,26 @@ func ProductRecord(products product.Core) Product {
 		Distributor: DistributorRecord(products.Distributor),
 	}
 }
+
+func (p *Product) toCore() product.Core {
+	return product.Core{
+		ID:        int(p.ID),
+		Name:      p.Name,
+		Price:     p.Price,
+		Satuan:    p.Satuan,
+		CreatedAt: p.CreatedAt,
+		UpdatedAt: p.UpdatedAt,
+	}
+}
+
+func toCoreList(resp []Product) []product.Core {
+	p := []product.Core{}
+	for key := range resp {
+		p = append(p, resp[key].toCore())
+	}
+	return p
+}
+
+func fromCore(core product.Core) Product {
+	return Product{}
+}
