@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"github.com/labstack/echo/v4"
-
 	"A-Golang-MiniProject/factory"
+
+	"github.com/labstack/echo/v4"
 )
 
 func New() *echo.Echo {
@@ -16,6 +16,9 @@ func New() *echo.Echo {
 	e.POST("/product", presenter.ProductPresentation.AddProduct)
 	e.GET("/distributor", presenter.DistributorPresentation.GetAllData)
 	e.POST("/distributor", presenter.DistributorPresentation.CreateData)
+
+	e.GET("/daily-menu", presenter.ProductPresentation.GetAllData)
+	e.POST("/daily-menu", presenter.ProductPresentation.AddProduct)
 
 	return e
 }
