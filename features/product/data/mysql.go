@@ -18,7 +18,7 @@ func NewProductRepository(conn *gorm.DB) product.Data {
 
 func (ar *mysqlProductRepository) SelectData(title string) (resp []product.Core) {
 	var record []Product
-	if err := ar.Conn.Preload("Distributor").Find(&record).Error; err != nil {
+	if err := ar.Conn.Preload("Product").Find(&record).Error; err != nil {
 		return []product.Core{}
 	}
 	return toCoreList(record)
