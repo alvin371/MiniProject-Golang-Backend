@@ -14,6 +14,8 @@ func New() *echo.Echo {
 	e := echo.New()
 	e.GET("/product", presenter.ProductPresentation.GetAllData)
 	e.POST("/product", presenter.ProductPresentation.AddProduct)
+	e.GET("/distributor", presenter.DistributorPresentation.GetAllData)
+	e.POST("/distributor", presenter.DistributorPresentation.CreateData)
 
 	return e
 }
