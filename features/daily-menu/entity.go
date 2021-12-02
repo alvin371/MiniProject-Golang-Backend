@@ -20,10 +20,10 @@ type Obj struct {
 
 type Bussiness interface {
 	GetAllData(search string) (resp []DailyMenu)
-	CreateData(data DailyMenu) (resp DailyMenu, err error)
+	CreateData(data *DailyMenu) (resp DailyMenu, err error)
 }
 
 type Data interface {
-	InsertData(data DailyMenu) (resp DailyMenu, err error)
 	SelectData(name string) (resp []DailyMenu)
+	InsertData(data *DailyMenu) (resp DailyMenu, err error)
 }

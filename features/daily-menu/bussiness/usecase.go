@@ -19,7 +19,7 @@ func (dy *DailyMenuUseCase) GetAllData(search string) (resp []dailymenu.DailyMen
 	return
 }
 
-func (dy *DailyMenuUseCase) CreateData(data dailymenu.DailyMenu) (resp dailymenu.DailyMenu, err error) {
+func (dy *DailyMenuUseCase) CreateData(data *dailymenu.DailyMenu) (resp dailymenu.DailyMenu, err error) {
 	resp, err = dy.DailyMenu.InsertData(data)
 	if err != nil {
 		return dailymenu.DailyMenu{}, err
