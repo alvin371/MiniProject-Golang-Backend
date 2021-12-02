@@ -20,12 +20,16 @@ func Init() Presenter {
 	productBussiness := _product_bussiness.NewProductBussiness(productData)
 	productPresentation := _product_presentation.NewProductHandler(productBussiness)
 
+	// distributorData := _distributor_data.NewDistribRepository(config.DB)
+	// distributorBussiness := _distributor_bussiness.NewDistributorBussiness(distributorData)
+	// distributorPresentation := _distributor_presentation.NewDistribHandler(distributorBussiness)
+
 	dailyData := _daily_data.NewmysqlDailyMenuRepository(config.DB)
 	dailyBussiness := _daily_bussiness.NewDailyMenuBussiness(dailyData)
 	dailyPresentation := _daily_presentation.NewDMHandler(dailyBussiness)
-
 	return Presenter{
 		ProductPresentation: productPresentation,
 		DailyPresentation:   dailyPresentation,
+		// DistributorPresentation: distributorPresentation,
 	}
 }
