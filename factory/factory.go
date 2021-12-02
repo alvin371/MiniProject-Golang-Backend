@@ -2,9 +2,13 @@ package factory
 
 import (
 	"A-Golang-MiniProject/config"
+	"A-Golang-MiniProject/features/order-recap"
+	orderDB "A-Golang-MiniProject/features/order-recap/data"
 	_product_bussiness "A-Golang-MiniProject/features/product/bussiness"
 	_product_data "A-Golang-MiniProject/features/product/data"
 	_product_presentation "A-Golang-MiniProject/features/product/presentation"
+
+	"gorm.io/gorm"
 )
 
 type Presenter struct {
@@ -19,4 +23,8 @@ func Init() Presenter {
 	return Presenter{
 		ProductPresentation: productPresentation,
 	}
+}
+
+func NewOrderRepository(conn *gorm.DB) order.Data {
+	return orderDB.NewMySqlOrderRepository(conn)
 }
