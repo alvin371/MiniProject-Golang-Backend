@@ -7,7 +7,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/v4"
 )
 
 type DailyMenuHandler struct {
@@ -33,9 +32,10 @@ func (dm *DailyMenuHandler) GetAllData(c echo.Context) error {
 
 // insert data
 
-func (dm *DailyMenuHandler) AddDailyMenu(c echo.Context) error {
+func (dm *DailyMenuHandler) CreateData(c echo.Context) error {
 	var NewDM presentation_request.DailyMenu
 	c.Bind(&NewDM)
+
 	resp, err := dm.dmBussiness.CreateData(presentation_request.ToCore(NewDM))
 
 	if err != nil {

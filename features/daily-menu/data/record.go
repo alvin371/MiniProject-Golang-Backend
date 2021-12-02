@@ -1,7 +1,7 @@
 package data
 
 import (
-	dailymenu "A-Golang-MiniProject/features/daily-menu"
+	dm "A-Golang-MiniProject/features/daily-menu"
 
 	"gorm.io/gorm"
 )
@@ -13,24 +13,24 @@ type DailyMenu struct {
 	Desc  string
 }
 
-func (dm *DailyMenu) toCore() dailymenu.DailyMenu {
-	return dailymenu.DailyMenu{
-		ID:        int(dm.ID),
-		Name:      dm.Name,
-		Price:     dm.Price,
-		CreatedAt: dm.CreatedAt,
-		UpdatedAt: dm.UpdatedAt,
+func (d *DailyMenu) toDomain() dm.Core {
+	return dm.Core{
+		ID:        int(d.ID),
+		Name:      d.Name,
+		Price:     d.Price,
+		CreatedAt: d.CreatedAt,
+		UpdatedAt: d.UpdatedAt,
 	}
 }
 
-func toCoreList(resp []DailyMenu) []dailymenu.DailyMenu {
-	dm := []dailymenu.DailyMenu{}
+func toCoreList(resp []DailyMenu) []dm.Core {
+	dm := []dm.Core{}
 	for key := range resp {
-		dm = append(dm, resp[key].toCore())
+		dm = append(dm, resp[key].toDomain())
 	}
 	return dm
 }
 
-func fromDomain(core dailymenu.DailyMenu) DailyMenu {
+func fromDomain(core dm.Core) DailyMenu {
 	return DailyMenu{}
 }

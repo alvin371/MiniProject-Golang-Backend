@@ -1,6 +1,8 @@
 package request
 
-import dailymenu "A-Golang-MiniProject/features/daily-menu"
+import (
+	dm "A-Golang-MiniProject/features/daily-menu"
+)
 
 type DailyMenu struct {
 	Name  string
@@ -8,8 +10,16 @@ type DailyMenu struct {
 	Desc  string
 }
 
-func (req *DailyMenu) ToCore() *dailymenu.DailyMenu {
-	return &dailymenu.DailyMenu{
+func (req DailyMenu) ToDomain() dm.Core {
+	return dm.Core{
+		Name:  req.Name,
+		Price: req.Price,
+		Desc:  req.Desc,
+	}
+}
+
+func ToCore(req DailyMenu) dm.Core {
+	return dm.Core{
 		Name:  req.Name,
 		Price: req.Price,
 		Desc:  req.Desc,

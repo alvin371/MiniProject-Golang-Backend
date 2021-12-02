@@ -14,7 +14,7 @@ type DailyMenu struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-func FromCore(core dailymenu.DailyMenu) DailyMenu {
+func FromCore(core dailymenu.Core) DailyMenu {
 	return DailyMenu{
 		ID:        core.ID,
 		Name:      core.Name,
@@ -25,7 +25,7 @@ func FromCore(core dailymenu.DailyMenu) DailyMenu {
 	}
 }
 
-func FromCoreSlice(Core []dailymenu.DailyMenu) []DailyMenu {
+func FromCoreSlice(Core []dailymenu.Core) []DailyMenu {
 	var artArray []DailyMenu
 	for key := range Core {
 		artArray = append(artArray, FromCore(Core[key]))

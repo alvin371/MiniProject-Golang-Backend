@@ -1,28 +1,26 @@
 package bussiness
 
-import (
-	dailymenu "A-Golang-MiniProject/features/daily-menu"
-)
+import dm "A-Golang-MiniProject/features/daily-menu"
 
 type DailyMenuUseCase struct {
-	DailyMenu dailymenu.Data
+	DailyMenu dm.Data
 }
 
-func NewDailyMenuBussiness(dayData dailymenu.Data) dailymenu.Bussiness {
+func NewDailyMenuBussiness(dayData dm.Data) dm.Bussiness {
 	return &DailyMenuUseCase{
 		DailyMenu: dayData,
 	}
 }
 
-func (dy *DailyMenuUseCase) GetAllData(search string) (resp []dailymenu.DailyMenu) {
-	resp = dy.DailyMenu.SelectData(search)
+func (dy *DailyMenuUseCase) GetAllData(search string) (resp []dm.Core) {
+	resp = dy.DailyMenu.GetAllData(search)
 	return
 }
 
-func (dy *DailyMenuUseCase) CreateData(data *dailymenu.DailyMenu) (resp dailymenu.DailyMenu, err error) {
-	resp, err = dy.DailyMenu.InsertData(data)
+func (dy *DailyMenuUseCase) CreateData(data dm.Core) (resp dm.Core, err error) {
+	resp, err = dy.DailyMenu.CreateData(data)
 	if err != nil {
-		return dailymenu.DailyMenu{}, err
+		return dm.Core{}, err
 	}
-	return dailymenu.DailyMenu{}, err
+	return dm.Core{}, err
 }
