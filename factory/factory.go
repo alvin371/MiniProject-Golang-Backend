@@ -2,9 +2,6 @@ package factory
 
 import (
 	"A-Golang-MiniProject/config"
-	_distributor_bussiness "A-Golang-MiniProject/features/distributor/bussiness"
-	_distributor_data "A-Golang-MiniProject/features/distributor/data"
-	_distributor_presentation "A-Golang-MiniProject/features/distributor/presentation"
 	_daily_bussiness "A-Golang-MiniProject/features/daily-menu/bussiness"
 	_daily_data "A-Golang-MiniProject/features/daily-menu/data"
 	_daily_presentation "A-Golang-MiniProject/features/daily-menu/presentation"
@@ -23,19 +20,16 @@ func Init() Presenter {
 	productBussiness := _product_bussiness.NewProductBussiness(productData)
 	productPresentation := _product_presentation.NewProductHandler(productBussiness)
 
-	distributorData := _distributor_data.NewDistribRepository(config.DB)
-	distributorBussiness := _distributor_bussiness.NewDistributorBussiness(distributorData)
-	distributorPresentation := _distributor_presentation.NewDistribHandler(distributorBussiness)
+	// distributorData := _distributor_data.NewDistribRepository(config.DB)
+	// distributorBussiness := _distributor_bussiness.NewDistributorBussiness(distributorData)
+	// distributorPresentation := _distributor_presentation.NewDistribHandler(distributorBussiness)
 
-	return Presenter{
-		ProductPresentation:     productPresentation,
-		DistributorPresentation: distributorPresentation,
 	dailyData := _daily_data.NewmysqlDailyMenuRepository(config.DB)
 	dailyBussiness := _daily_bussiness.NewDailyMenuBussiness(dailyData)
 	dailyPresentation := _daily_presentation.NewDMHandler(dailyBussiness)
-
 	return Presenter{
 		ProductPresentation: productPresentation,
 		DailyPresentation:   dailyPresentation,
+		// DistributorPresentation: distributorPresentation,
 	}
 }
