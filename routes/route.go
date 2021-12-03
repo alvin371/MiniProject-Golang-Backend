@@ -15,6 +15,7 @@ func New() *echo.Echo {
 
 	//initiate
 	e := echo.New()
+	// V1 := e.Group("v1/api/")
 	e.Pre(middleware.RemoveTrailingSlash())
 	our_middleware.LogMiddleware(e)
 
@@ -25,6 +26,9 @@ func New() *echo.Echo {
 
 	e.GET("/daily-menu", presenter.ProductPresentation.GetAllData)
 	e.POST("/daily-menu", presenter.ProductPresentation.AddProduct)
+
+	e.GET("/order-recap", presenter.OrderPresentation.GetAll)
+	e.POST("/order-recap", presenter.OrderPresentation.Create)
 
 	return e
 }
