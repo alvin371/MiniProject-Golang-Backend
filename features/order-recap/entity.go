@@ -12,10 +12,10 @@ type Core struct {
 
 type Bussiness interface {
 	GetAll() ([]Core, error)
-	Create(core *Core) (Core, error)
+	Create(core Core) (err error)
 }
 
 type Data interface {
 	GetAll() ([]Core, error)
-	Create(core *Core) (Core, error)
+	Create(core Core) (err error)
 }

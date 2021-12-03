@@ -7,9 +7,7 @@ type serviceOrder struct {
 }
 
 func NewServiceOrder(repoOrder order.Data) order.Bussiness {
-	return &serviceOrder{
-		orderRepo: repoOrder,
-	}
+	return &serviceOrder{orderRepo: repoOrder}
 }
 
 func (so *serviceOrder) GetAll() ([]order.Core, error) {
@@ -21,10 +19,10 @@ func (so *serviceOrder) GetAll() ([]order.Core, error) {
 	return result, nil
 }
 
-func (so *serviceOrder) Create(core *order.Core) (order.Core, error) {
-	result, err := so.orderRepo.Create(core)
+func (so *serviceOrder) Create(core order.Core) error {
+	err := so.orderRepo.Create(core)
 	if err != nil {
-		return order.Core{}, err
+		return err
 	}
-	return result, nil
+	return nil
 }

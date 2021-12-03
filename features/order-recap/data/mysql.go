@@ -10,10 +10,8 @@ type MysqlOrderRepository struct {
 	Conn *gorm.DB
 }
 
-func NewMySqlOrderRepository(conn *gorm.DB) order.Data {
-	return &MysqlOrderRepository{
-		Conn: conn,
-	}
+func NewMySqlOrderRepository(Conn *gorm.DB) order.Data {
+	return &MysqlOrderRepository{Conn}
 }
 
 func (rep *MysqlOrderRepository) GetAll() ([]order.Core, error) {
@@ -26,13 +24,13 @@ func (rep *MysqlOrderRepository) GetAll() ([]order.Core, error) {
 	}
 	return toDomainList(ord), nil
 }
-func (rep *MysqlOrderRepository) Create(domain *order.Core) (order.Core, error) {
-	or := fromDomain(*domain)
+func (rep *MysqlOrderRepository) Create(domain order.Core) error {
+	or := fromDomain(domain)
 	result := rep.Conn.Create(&or)
 
 	if result.Error != nil {
-		return order.Core{}, nil
+		return result.Error
 	}
 
-	return toDomain(or), nil
+	return nil
 }

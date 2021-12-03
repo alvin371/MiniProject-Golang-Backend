@@ -40,6 +40,7 @@ func NewErrorResponse(c echo.Context, status int, err error) error {
 func NewSuccesResponse(c echo.Context, param interface{}) error {
 	response := BasicResponse{}
 	response.Meta.Message = "You lucky today our apps running"
+	response.Data = param
 	return c.JSON(http.StatusOK, response)
 }
 

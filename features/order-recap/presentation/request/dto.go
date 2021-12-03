@@ -7,8 +7,8 @@ type Order struct {
 	Worker      string `json:"worker_name"`
 }
 
-func (req *Order) ToDomain() *order.Core {
-	return &order.Core{
+func (req *Order) ToDomain() order.Core {
+	return order.Core{
 		Total_Price: req.Total_Price,
 		Worker:      req.Worker,
 	}
